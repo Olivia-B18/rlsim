@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Snake
+{% endblock %}
+
+{% block head %}
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='snake.css')}}"
+/>
+{% endblock %}
+
+{% block container %}
+<div class="mt-3"></div>
+<div id="gameContainer">
+    <canvas id="gameBoard" width="640" height="480"></canvas>
+    <p id="gameOver"></p>
+    <a href="/snakeai" id="continue"></a>
+</div>
+
+<h4 align="center" id="scoreText">SCORE: 0</h4>
+<h4 align="center" id="gameText">GAMES: 0</h4>
+
+<br>
+<div align="center"><button id="resetBtn" class="btn btn-primary">play</button></div>
+<br>
+<div align="center">
+<a href="/snakeai">
+    <button  class="btn btn-primary" id="button">continue</button>
+  </a>
+</div>
+  
+
+<script src="{{url_for('static', filename='snake.js')}}"></script>
+{% endblock %}
