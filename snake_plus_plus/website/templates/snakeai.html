@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Training
+{% endblock %}
+
+{% block head %}
+  <link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='snake.css')}}"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block container %}
+
+  <div class="mx-auto mt-3" style="width: 1000px;">
+
+    <div class="row">
+
+      <div class="col align-self-start" id="hideme">
+
+          <br>
+          <br>
+          <br>
+
+        <div class="row"> 
+          <div style="width: 200px;">
+            <h5 class="text-left">score</h5>
+          </div>
+          <h5 id="score">0</h5>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row"> 
+          <div style="width: 200px;">
+            <h5 class="text-left">your high score: </h5>
+          </div>
+          <h5 id="highscore">0</h5>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row"> 
+          <div style="width: 200px;">
+            <h5 class="text-left" id="mint">highscore</h5>
+          </div>
+          <h5 id="goal">40</h5>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row"> 
+          <div style="width: 200px;">
+            <h5 class="text-left">games: </h5>
+          </div>
+          <h5 id="games">0/100</h5>
+        </div>
+
+        <br>
+        <br>
+
+        <div style="width: 300px;" class="row"> 
+          <h5 id="mint">notice how the AI(snake) behaves differently based off how you trained it...</h5>
+        </div>
+
+        <br>
+        <br>
+
+
+      </div>
+
+
+
+          <div class="col align-self-center" id="gameContainer">
+            <canvas id="gameBoard" width="640" height="480"></canvas>
+            <div class="col">
+              <br>
+          <div align="center">
+              <h5 align="center">when the snake gets a point, I want to
+                <select style="width: 200px" name="food" id="food">
+                  <option selected="selected"></option>
+                  <option value="0">leave it alone</option>
+                  <option value="10">reward it</option>
+                  <option value="-10">punish it</option>
+                </select>
+              </h5>
+              <br>
+              <h5 align="center">when the snake stays alive, I want to
+                <select style="width: 200px" name="alive" id="alive">
+                  <option selected="selected"></option>
+                  <option value="0">leave it alone</option>
+                  <option value="10">reward it</option>
+                  <option value="-10">punish it</option>
+                </select>
+              </h5>
+              <br>
+              <h5 align="center">when the snake dies, I want to
+                <select style="width: 200px" name="die" id="die">
+                  <option selected="selected"></option>
+                  <option value="0">leave it alone</option>
+                  <option value="10">reward it</option>
+                  <option value="-10">punish it</option>
+                </select>
+              </h5>
+              <br>
+
+              <div align="center" style="width: 240px; display: inline;">
+                <button style="width: 240px;" class="btn btn-primary" id="btn-train">train</button>
+              </div>  
+
+              <div class="ml-5" align="right" style="display: inline;">
+                <button style="width: 240px; display: inline;" class="btn btn-primary" id="btn-off">stop training</button>
+              </div>
+              
+    </div>
+
+          </div>
+
+        </div>
+
+        <div class="row align-items-end">
+
+    
+
+          
+        </div>
+
+    </div>
+  </div>
+    
+    <script src="{{url_for('static', filename='snakeai.js')}}"></script>
+{% endblock %}
+
