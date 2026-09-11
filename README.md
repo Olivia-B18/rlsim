@@ -29,12 +29,11 @@ To run Hinojosa's Snake web app for middle schoolers:
 
 ```
 cd hinojosa_snake
-python main.py
-```
 
-Then open <http://localhost:5001> in a browser. The app serves on 5001 rather
-than Flask's default 5000, which is occupied on macOS by Control Center's
-AirPlay Receiver.
+python main.py
+
+# MANUAL: open the port that loads in a browser <http://localhost:5001>
+```
 
 To run my Snake web app:
 
