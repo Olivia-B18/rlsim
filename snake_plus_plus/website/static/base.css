@@ -1,0 +1,82 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #2b2c3f;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+    color: white;
+}
+
+#mint,
+#goal {
+    color: #47ffa3;
+}
+
+.title {
+    font-size: 60px;
+}
+
+a {
+    color: #9cffcd;
+    font-size: 20px
+}
+
+a:hover {
+    color: #9cffcd;
+}
+
+#button,
+#resetBtn,
+#btn-off {
+    background-color: #47ffa3;
+    border-color: #47ffa3;
+    color: #2b2c3f;
+    width: 130px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hide {
+    display: none;
+}
+
+.highscore:hover+.hide {
+    display: block;
+    color: red;
+}
+
+label {
+    color: white;
+}
+
+#btn-train {
+    background-color: #47ffa3;
+    border-color: #47ffa3;
+    color: #2b2c3f;
+    width: 130px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+select {
+    width: 75px;
+    height: 30px;
+}
+
+#gameOver {
+    font-size: 20px;
+    display: inline;
+}
+
+#grade-level,
+#die,
+#alive,
+#food {
+    border-radius: 4%;
+}
