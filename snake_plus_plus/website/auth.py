@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 from .dbmodels import User
+from . import flow
 
 auth = Blueprint('auth', __name__)
 
@@ -16,25 +17,27 @@ def signin():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=False)
+            flow.reset()
             return redirect(url_for("views.intro"))
     return render_template("signin.html")
 
 @auth.route("logout")
 def logout():
     logout_user()
+    flow.clear()
     return redirect(url_for("auth.signin"))
 
 def valid_input(first_name, grade_level, last_name):
     if len(first_name) < 2:
-        flash("first name must be greater than 1 character", category="error")
+        flash("First name must be greater than 1 character.", category="error")
         return False
     if len(grade_level) == 0:
-        flash("grade level can't be empty", category="error")
+        flash("Grade level can't be empty.", category="error")
         return False
     if grade_level == "0":
-        flash("grade level can't be empty", category="error")
+        flash("Grade level can't be empty.", category="error")
         return False
     if len(last_name) < 1:
-        flash("last initial can't be empty", category="error")
+        flash("Last initial can't be empty.", category="error")
         return False
     return True

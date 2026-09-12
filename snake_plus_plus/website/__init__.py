@@ -16,6 +16,8 @@ def create_app():
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.signin"
+    login_manager.login_message = "You must log in to proceed."
+    login_manager.login_message_category = "error"
     login_manager.init_app(app)
 
     from .views import views
