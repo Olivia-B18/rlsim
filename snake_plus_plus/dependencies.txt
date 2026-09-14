@@ -5,3 +5,4 @@ numpy
 flask_socketio
 flask_sqlalchemy
 torch
+djlint

@@ -8,8 +8,8 @@
     * Design experiment.
     * Evaluate both Snake apps (heuristic or student beta testers).
 * Make and share repo with faculty mentor.
-* Fixes to basic Snake (```hinojosa_snake```):
-    * Commented out function in ```game.py``` to make Snake platform agnostic (runs on Windows, Linux, and now macOS too).
+* Fixes to basic Snake (`hinojosa_snake`):
+    * Commented out function in `game.py` to make Snake platform agnostic (runs on Windows, Linux, and now macOS too).
     * Set port for Snake from default 5000 to 5001 since the default port is sometimes busy on macOS.
 * Explore basic Snake.
 * Begin making Snake++.
