@@ -5,9 +5,15 @@
     --accent-hover: #9cffcd;
 }
 
-body {
-    font-family: 'Quicksand', sans-serif;
-    background-color: var(--bg-color);
+/* Format built-in elements */
+
+a {
+    color: var(--accent);
+    font-size: 20px
+}
+
+a:hover {
+    color: var(--accent-hover);
 }
 
 h1,
@@ -21,8 +27,18 @@ label {
     color: white;
 }
 
-#mint,
-#goal {
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+}
+
+select {
+    border-radius: 0.25rem;
+}
+
+/* Custom class definitions */
+
+.mint-color {
     color: var(--accent);
 }
 
@@ -30,19 +46,7 @@ label {
     font-size: 60px;
 }
 
-a {
-    color: var(--accent-hover);
-    font-size: 20px
-}
-
-a:hover {
-    color: var(--accent-hover);
-}
-
-#button,
-#resetBtn,
-#btn-train,
-#btn-off {
+.button {
     background-color: var(--accent);
     border-color: var(--accent);
     color: var(--bg-color);
@@ -50,6 +54,20 @@ a:hover {
     font-weight: bold;
     font-size: 20px;
 }
+
+.button:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--bg-color);
+    width: 130px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+ .button:focus {
+      box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent)
+  50%, transparent);
+  }
 
 .hide {
     display: none;
@@ -60,19 +78,21 @@ a:hover {
     color: red;
 }
 
-select {
-    width: 75px;
-    height: 30px;
-}
-
-#gameOver {
+/* .game-over {
     font-size: 20px;
     display: inline;
+} */
+
+/* Bootstrap overrides */
+
+/* Flash message close button: same color as the alert text */
+.alert .close,
+.alert .close:hover {
+    color: inherit;
+    text-shadow: none;
+    opacity: 1;
 }
 
-#grade-level,
-#die,
-#alive,
-#food {
-    border-radius: 4%;
+.alert .close span {
+    color: inherit;
 }

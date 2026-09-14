@@ -33,9 +33,9 @@
                 <br>
                 <div class="row">
                     <div style="width: 200px;">
-                        <h5 class="text-left" id="mint">highscore</h5>
+                        <h5 class="text-left mint-color">highscore</h5>
                     </div>
-                    <h5 id="goal">40</h5>
+                    <h5 class="mint-color">40</h5>
                 </div>
                 <br>
                 <br>
@@ -48,13 +48,13 @@
                 <br>
                 <br>
                 <div style="width: 300px;" class="row">
-                    <h5 id="mint">notice how the AI(snake) behaves differently based off how you trained it...</h5>
+                    <h5 class="mint-color">notice how the AI(snake) behaves differently based off how you trained it...</h5>
                 </div>
                 <br>
                 <br>
             </div>
-            <div class="col align-self-center" id="gameContainer">
-                <canvas id="gameBoard" width="640" height="480"></canvas>
+            <div class="col align-self-center game-container">
+                <canvas class="game-board" id="gameBoard" width="640" height="480"></canvas>
                 <div class="col">
                     <br>
                     <div align="center">
@@ -89,21 +89,13 @@
                         </h5>
                         <br>
                         <div align="center" style="width: 240px; display: inline;">
-                            <button style="width: 240px;" class="btn btn-primary" id="btn-train">train</button>
+                            <button style="width: 240px;" class="btn button" id="trainBtn">train</button>
                         </div>
-                        <div class="ml-5" align="right" style="display: inline;">
-                            <button style="width: 240px;
-                                           display: inline"
-                                    class="btn btn-primary"
-                                    id="btn-off">stop training</button>
+                        <div class="ml-5" align="right" style="width: 240px; display: inline;">
+                            <button style="width: 240px;" class="btn button" id="offBtn">stop training</button>
                         </div>
-                        <div class="ml-5" align="right" style="display: inline;">
-                            <a href="/evaluation">
-                                <button style="width: 240px;
-                                               display: inline"
-                                        class="btn btn-primary"
-                                        id="button">continue</button>
-                            </a>
+                        <div class="ml-5" align="right" style="width: 240px; display: inline">
+                            <a href="/evaluation" style="width: 240px;" class="btn button">continue</a>
                         </div>
                     </div>
                 </div>

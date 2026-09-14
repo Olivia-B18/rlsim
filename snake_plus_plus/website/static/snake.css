@@ -1,8 +1,8 @@
-#gameContainer {
+.game-container {
     text-align: center;
 }
 
-#gameBoard {
+.game-board {
     border: 3px solid;
     border-radius: 4%;
     background-color: white;

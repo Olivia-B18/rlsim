@@ -14,9 +14,9 @@ const unitSize = 20;
 let foodX;
 let foodY;
 let score = 0;
-let game_score = 0;
+let gameScore = 0;
 let snake = [];
-let num_trainings = 0;
+let numTrainings = 0;
 let games = 0;
 let running = false;
 
@@ -29,7 +29,7 @@ ctx.fillText("training arena", gameWidth / 2, gameHeight / 2);
 
 hidemeDiv.style.display = "none";
 //triggers when train button is clicked, sends call to train event that begins training
-document.getElementById("btn-train").addEventListener("click", function () {
+document.getElementById("trainBtn").addEventListener("click", function () {
     if (!running) {
         running = true;
         let food = document.getElementById("food").value;
@@ -46,7 +46,7 @@ document.getElementById("btn-train").addEventListener("click", function () {
 
 })
 
-document.getElementById("btn-off").addEventListener("click", function () {
+document.getElementById("offBtn").addEventListener("click", function () {
     running = false;
 })
 
@@ -71,7 +71,7 @@ socket.on("snake_data", function (data, callback) {
     snake = data["data"]["snake"];
     games = data["data"]["stats"]["games"];
     score = data["data"]["stats"]["score"];
-    game_score = data["data"]["stats"]["record"];
+    gameScore = data["data"]["stats"]["record"];
     drawFood();
     drawSnake();
     drawStats();
@@ -111,7 +111,7 @@ function drawSnake() {
 
 function drawStats() {
     scoreText.textContent = score;
-    highscoreText.textContent = game_score;
+    highscoreText.textContent = gameScore;
     if (games == 1000) {
         gamesText.textContent = "0/100"
     }
