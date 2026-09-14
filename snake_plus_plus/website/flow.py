@@ -14,7 +14,14 @@ from flask import flash, redirect, session, url_for
 
 # The lesson pages in the order they must be visited. These are view function
 # names on the `views` blueprint.
-FLOW = ["intro", "snake", "snakeai"]
+FLOW = ["intro",
+        "snake",
+        "untrained",
+        "parameters",
+        "training",
+        "evaluation",
+        "conclusion",
+        ]
 
 SESSION_KEY = "flow_unlocked"
 
