@@ -17,6 +17,7 @@
     * Cleaned up CSS.
     * Cleaned up HTML indentation.
     * Fixed CSS/HTML bugs that came with those changes.
+    * Added more error messages and fixed close button.
     * Added flow enforcement (currently commented out).
 
 ## Weeks 4-6
