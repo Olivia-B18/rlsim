@@ -22,4 +22,5 @@
 
 ## Weeks 4-6
 
-TBD
+* Continue making Snake++.
+    * TBD
