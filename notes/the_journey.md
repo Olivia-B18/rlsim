@@ -19,6 +19,7 @@
     * Fixed CSS/HTML bugs that came with those changes.
     * Added more error messages and fixed close button.
     * Added flow enforcement (currently commented out).
+* Rewrote git history to remove `model` that was accidentally cached.
 
 ## Weeks 4-6
 
