@@ -1,6 +1,13 @@
+/* Theme colors */
+:root{
+    --bg-color: #2b2c3f;
+    --accent: #47ffa3;
+    --accent-hover: #9cffcd;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: #2b2c3f;
+    background-color: var(--bg-color);
 }
 
 h1,
@@ -9,13 +16,14 @@ h3,
 h4,
 h5,
 p,
-span {
+span,
+label {
     color: white;
 }
 
 #mint,
 #goal {
-    color: #47ffa3;
+    color: var(--accent);
 }
 
 .title {
@@ -23,20 +31,21 @@ span {
 }
 
 a {
-    color: #9cffcd;
+    color: var(--accent-hover);
     font-size: 20px
 }
 
 a:hover {
-    color: #9cffcd;
+    color: var(--accent-hover);
 }
 
 #button,
 #resetBtn,
+#btn-train,
 #btn-off {
-    background-color: #47ffa3;
-    border-color: #47ffa3;
-    color: #2b2c3f;
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-color);
     width: 130px;
     font-weight: bold;
     font-size: 20px;
@@ -49,19 +58,6 @@ a:hover {
 .highscore:hover+.hide {
     display: block;
     color: red;
-}
-
-label {
-    color: white;
-}
-
-#btn-train {
-    background-color: #47ffa3;
-    border-color: #47ffa3;
-    color: #2b2c3f;
-    width: 130px;
-    font-weight: bold;
-    font-size: 20px;
 }
 
 select {
