@@ -1,8 +1,15 @@
-"""Linear flow enforcement for the guided lesson.
+"""
+Linear flow enforcement for the guided lesson.
 
 The lesson is meant to be walked in one order:
 
-    /signin -> /intro -> /snake -> /snakeai
+    1. Intro
+    2. Snake
+    3. Untrained
+    4. Parameters
+    5. Training
+    6. Evaluation
+    7. Conclusion
 
 Flow maintained in this file because login_required only
 answers if a person is signed in, not managing locking pages.
