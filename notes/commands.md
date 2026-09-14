@@ -6,6 +6,12 @@
 python write_dependencies.txt > dependencies.txt
 ```
 
+# Removing Flow Enforcement
+
+```
+sed -i '' -E 's/^# (@login_required|@flow\.step)/\1/' snake_plus_plus/website/views.py
+```
+
 ## Using djLint
 
 ```

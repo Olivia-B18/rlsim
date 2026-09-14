@@ -13,7 +13,11 @@
     * Set port for Snake from default 5000 to 5001 since the default port is sometimes busy on macOS.
 * Explore basic Snake.
 * Begin making Snake++.
-* Apply to research conferences.
+    * Created skeleton of main pages.
+    * Cleaned up CSS.
+    * Cleaned up HTML indentation.
+    * Fixed CSS/HTML bugs that came with those changes.
+    * Added flow enforcement (currently commented out).
 
 ## Weeks 4-6
 

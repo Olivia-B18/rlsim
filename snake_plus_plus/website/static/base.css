@@ -38,7 +38,7 @@ select {
 
 /* Custom class definitions */
 
-.mint-color {
+.accent-text {
     color: var(--accent);
 }
 
