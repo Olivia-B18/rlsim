@@ -3,7 +3,7 @@
 ## Weeks 1-3
 
 * Draft feasible timeline for project:
-    * Make basic Snake work.
+    * Make basic Snake work and make it platform agnostic.
     * Make Snake++.
     * Design experiment.
     * Evaluate both Snake apps (heuristic or student beta testers).
