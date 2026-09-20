@@ -4,32 +4,28 @@
     --accent: #47ffa3;
     --accent-hover: #9cffcd;
     --accent-dark: #3cdd8c;
+    --body-text-size: 20px;
+    --button-text-size: 1.5rem;
 }
 
 /* Format built-in elements */
 
 a {
     color: var(--accent);
-    font-size: 20px
+    font-size: var(--body-text-size);
 }
 
 a:hover {
     color: var(--accent-hover);
 }
 
-h1,
-h2,
-p,
-span,
-legend,
-option {
-    color: white;
+p {
+    font-size: var(--body-text-size);
 }
 
 label,
 output {
-    color: white;
-    font-size: 1.5rem;
+    font-size: var(--body-text-size);
 }
 
 body {
@@ -125,7 +121,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
     color: var(--bg-color);
     width: 130px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: var(--button-text-size);
 }
 
 .button:hover {
@@ -134,7 +130,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
     color: var(--bg-color);
     width: 130px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: var(--button-text-size);
 }
 
 .button:focus {
