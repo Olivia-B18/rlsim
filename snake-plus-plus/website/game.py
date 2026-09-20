@@ -6,7 +6,6 @@ from enum import Enum
 from collections import namedtuple
 from .events import socketio
 from flask_socketio import emit
-from flask_login import current_user
 from flask import request
 import time
 

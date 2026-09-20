@@ -11,6 +11,8 @@ import ast
 import pathlib
 from importlib.metadata import packages_distributions, version
 
+RUNTIME_EXTRAS = {"simple-websocket"}
+
 # import name -> installed distribution(s), e.g. "flask_login"
 # -> ["Flask-Login"]
 dists = packages_distributions()
@@ -29,6 +31,6 @@ node.names}
 # Standard-library and local modules have no distribution, so
 # they drop out here.
 packages = {dist for module in modules for dist in
-dists.get(module, [])}
+dists.get(module, [])} | RUNTIME_EXTRAS
 for dist in sorted(packages, key=str.lower):
     print(f"{dist}=={version(dist)}")

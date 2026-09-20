@@ -1,7 +1,6 @@
 import torch
 import random
 import numpy as np
-import sys
 from collections import deque
 from flask_login import current_user
 from .game import SnakeGameAI, Direction, Point, BLOCK_SIZE
@@ -9,10 +8,8 @@ from .model import Linear_QNet, QTrainer
 from .dbmodels import AI
 from . import db
 import time
-from .events import socketio
 from flask_socketio import emit
 from flask_login import current_user
-from flask import request
 
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
@@ -162,7 +159,10 @@ def log_to_db(high_score, avg_score, eat, alive, die, user_id):
 def start(eat, alive, die):
 
     num_games, high_score, avg_score = train(int(eat), int(alive), int(die))
-    log_to_db(high_score, avg_score, eat, alive, die, current_user.id)
+    if current_user.is_authenticated:
+        log_to_db(high_score, avg_score, eat, alive, die, current_user.id)
+    else:
+        print("not signed in -- training result not saved")
 
 if __name__ == '__main__':
     start()

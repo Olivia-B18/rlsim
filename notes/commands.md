@@ -6,10 +6,16 @@
 python write_dependencies.txt > dependencies.txt
 ```
 
-# Removing Flow Enforcement
+# Removing Temporary DEV Comments
+
+Remove the DEV comments, flow enforcement, and authentication enforcement
+to fully launch the project.
 
 ```
-sed -i '' -E 's/^# (@login_required|@flow\.step)/\1/' snake_plus_plus/website/views.py
+sed -i '' -E \
+    -e 's/^# (@login_required|@flow\.step|@authenticated_only)/\1/' \
+    -e '/^# DEV:/,/^$/d' \
+    snake-plus-plus/website/views.py snake-plus-plus/website/events.py
 ```
 
 ## Using djLint
