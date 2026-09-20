@@ -22,12 +22,21 @@ let running = false;
 
 const socket = io();
 
-ctx.font = "35px Quicksand";
-ctx.fillStyle = "black";
-ctx.textAlign = "center";
-ctx.fillText("training arena", gameWidth / 2, gameHeight / 2);
+const messageFont = `35px ${getComputedStyle(document.body).fontFamily}`;
+
+function drawMessage(text) {
+    ctx.font = messageFont;
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText(text, gameWidth / 2, gameHeight / 2);
+}
+
+document.fonts.load(messageFont)
+    .catch(() => { })
+    .then(() => drawMessage("training arena"));
 
 hidemeDiv.style.display = "none";
+
 //triggers when train button is clicked, sends call to train event that begins training
 document.getElementById("trainBtn").addEventListener("click", function () {
     if (!running) {
@@ -53,10 +62,7 @@ document.getElementById("offBtn").addEventListener("click", function () {
 function updateRunning() {
     if (games > 98) {
         running = false;
-        ctx.font = "35px Quicksand";
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.fillText("training concluded", gameWidth / 2, gameHeight / 2);
+        drawMessage("training concluded");
     }
     else {
         running = true;
@@ -81,10 +87,7 @@ socket.on("snake_data", function (data, callback) {
     else {
         games = 0
         clearBoard();
-        ctx.font = "35px Quicksand";
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.fillText("training concluded", gameWidth / 2, gameHeight / 2);
+        drawMessage("training concluded");
         return callback(false)
     }
     updateRunning();

@@ -26,11 +26,21 @@ let snake = [
 let games = 0;
 let speed = 180;
 
-ctx.font = "35px Quicksand";
-ctx.fillStyle = "black";
-ctx.textAlign = "center";
-ctx.fillText("press play", gameWidth / 2, gameHeight / 2);
-ctx.fillText("arrow keys to play", gameWidth / 2, gameHeight / 3);
+const messageFont = `35px ${getComputedStyle(document.body).fontFamily}`;
+
+function drawMessage(text, y = gameHeight / 2) {
+    ctx.font = messageFont;
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText(text, gameWidth / 2, y);
+}
+
+document.fonts.load(messageFont)
+    .catch(() => { })
+    .then(() => {
+        drawMessage("press play");
+        drawMessage("arrow keys to play", gameHeight / 3);
+    });
 
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
@@ -154,10 +164,7 @@ function checkGameOver() {
 };
 
 function displayGameOver() {
-    ctx.font = "35px Quicksand";
-    ctx.fillStyle = "black";
-    ctx.textAlign = "center";
-    ctx.fillText("game over", gameWidth / 2, gameHeight / 2);
+    drawMessage("game over");
     running = false;
 };
 function resetGame() {
