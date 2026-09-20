@@ -3,6 +3,7 @@
     --bg-color: #2b2c3f;
     --accent: #47ffa3;
     --accent-hover: #9cffcd;
+    --accent-dark: #3cdd8c;
 }
 
 /* Format built-in elements */
@@ -18,22 +19,94 @@ a:hover {
 
 h1,
 h2,
-h3,
-h4,
-h5,
 p,
 span,
-label {
+legend,
+option {
     color: white;
+}
+
+label,
+output {
+    color: white;
+    font-size: 1.5rem;
 }
 
 body {
     font-family: 'Quicksand', sans-serif;
     background-color: var(--bg-color);
+    color: white;
 }
 
 select {
     border-radius: 0.25rem;
+}
+
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+    padding-right: 5px;
+}
+
+option {
+    padding: 0;
+}
+
+input[type="range"] {
+    width: 200px;
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+/* Format the slider thumbs */
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--accent-dark);
+    width: 20px;
+    height: 20px;
+    margin-top: -6px;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--accent-dark);
+    width: 20px;
+    height: 20px;
+    border: none;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    background-color: var(--accent);
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+    background-color: var(--accent);
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+    background-color: var(--accent-hover);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+    background-color: var(--accent-hover);
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    box-shadow: none;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    box-shadow: none;
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+input[type="range"]:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 /* Custom class definitions */
@@ -64,7 +137,7 @@ select {
     font-size: 20px;
 }
 
- .button:focus {
+.button:focus {
       box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent)
   50%, transparent);
   }
@@ -78,10 +151,9 @@ select {
     color: red;
 }
 
-/* .game-over {
-    font-size: 20px;
-    display: inline;
-} */
+.container-spacing {
+    margin-top: 136px;
+}
 
 /* Bootstrap overrides */
 

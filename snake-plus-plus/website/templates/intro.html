@@ -3,14 +3,14 @@
     Introduction
 {% endblock %}
 {% block container %}
-    <div class="mt-5" style="width: 400px; height:40px"></div>
+    <h1 class="text-center title">Introduction</h1>
+    <br>
     <div class="text-center">
         <img class="rounded"
              style="max-width: 390px"
              src="{{ url_for('static', filename='chick1.jpeg') }}"
              alt="">
     </div>
-    <br>
     <div class="mx-auto mt-5" style="width: 510px;">
         <p class="text-center" style="font-size: 20px;">
             If you give reward a chicken when it does a backflip,
@@ -23,7 +23,7 @@
             But first... play the snake game yourself!
         </p>
         <div class="mx-auto mt-1" style="width: 200px;">
-            <a href="/snake" style="width: 200px;" class="btn button">get started</a>
+            <a href="/snake" style="width: 200px;" class="btn button">continue</a>
         </div>
     </div>
 {% endblock %}

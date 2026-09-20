@@ -31,11 +31,11 @@ def snake():
 def untrained():
     return render_template("untrained.html")
 
-@views.route("/parameters")
+@views.route("/hyperparameters")
 # @login_required
-# @flow.step("parameters")
+# @flow.step("hyperparameters")
 def parameters():
-    return render_template("parameters.html")
+    return render_template("hyperparameters.html")
 
 @views.route("/training")
 # @login_required

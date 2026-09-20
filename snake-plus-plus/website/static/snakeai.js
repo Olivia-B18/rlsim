@@ -22,6 +22,10 @@ let running = false;
 
 const socket = io();
 
+hidemeDiv.style.display = "none";
+
+/* Draw messages on game canvas */
+
 const messageFont = `35px ${getComputedStyle(document.body).fontFamily}`;
 
 function drawMessage(text) {
@@ -35,22 +39,28 @@ document.fonts.load(messageFont)
     .catch(() => { })
     .then(() => drawMessage("training arena"));
 
-hidemeDiv.style.display = "none";
+/* Update the output element's value according to the slider value */
 
-//triggers when train button is clicked, sends call to train event that begins training
+function updateDisplayOutput(inputEvent) {
+    const trainingOutput = document.querySelector(`output[for="${inputEvent.target.id}"]`);
+    trainingOutput.value = inputEvent.target.value;
+}
+
+const trainingInputElements = document.getElementById("training-sliders").querySelectorAll("input[type=range]");
+trainingInputElements.forEach((trainingInputElement) => {
+    trainingInputElement.addEventListener("input", updateDisplayOutput);
+    trainingInputElement.dispatchEvent(new Event("input"));
+})
+
+/* call training when "train" button clicked */
 document.getElementById("trainBtn").addEventListener("click", function () {
     if (!running) {
         running = true;
         let food = document.getElementById("food").value;
         let alive = document.getElementById("alive").value;
         let die = document.getElementById("die").value;
-        if (food == "" || alive == "" || die == "") {
-            running = false;
-        }
-        else {
-            socket.emit("train", food, alive, die);
-            hidemeDiv.style.display = "block";
-        }
+        socket.emit("train", food, alive, die);
+        hidemeDiv.style.display = "block";
     }
 
 })

@@ -11,7 +11,10 @@
 {% endblock %}
 {% block container %}
     <div class="mx-auto mt-3" style="width: 1000px;">
+        <h1 class="text-center title">Training an Agent</h1>
+        <br>
         <div class="row">
+            <!-- Training Score Progression -->
             <div class="col align-self-start" id="hideme">
                 <br>
                 <br>
@@ -54,50 +57,78 @@
                 <br>
                 <br>
             </div>
+            <!-- Game canvas, sliders, and buttons -->
             <div class="col align-self-center game-container">
+                <!-- Game canvas -->
                 <canvas class="game-board" id="gameBoard" width="640" height="480"></canvas>
-                <div class="col">
+                <!-- Sliders -->
+                <div class="col" align="center">
                     <br>
-                    <div align="center">
-                        <h5 align="center">
-                            when the snake gets a point, I want to
-                            <select style="width: 200px" name="food" id="food">
-                                <option selected="selected"></option>
-                                <option value="0">leave it alone</option>
-                                <option value="10">reward it</option>
-                                <option value="-10">punish it</option>
-                            </select>
-                        </h5>
-                        <br>
-                        <h5 align="center">
-                            when the snake stays alive, I want to
-                            <select style="width: 200px" name="alive" id="alive">
-                                <option selected="selected"></option>
-                                <option value="0">leave it alone</option>
-                                <option value="10">reward it</option>
-                                <option value="-10">punish it</option>
-                            </select>
-                        </h5>
-                        <br>
-                        <h5 align="center">
-                            when the snake dies, I want to
-                            <select style="width: 200px" name="die" id="die">
-                                <option selected="selected"></option>
-                                <option value="0">leave it alone</option>
-                                <option value="10">reward it</option>
-                                <option value="-10">punish it</option>
-                            </select>
-                        </h5>
-                        <br>
-                        <div class="ml-5" align="left" style="width: 240px; display: inline;">
-                            <button style="width: 240px;" class="btn button" id="trainBtn">train</button>
+                    <fieldset id="training-sliders">
+                        <legend>Choose the hyperparameters to train your agent with.</legend>
+
+                        <!-- Food -->
+                        <div>
+                            <label for="food">Food reward value:</label>
+                            <output id="output-food" for="food"></output>
                         </div>
-                        <div class="ml-5" align="center" style="width: 240px; display: inline;">
-                            <button style="width: 240px;" class="btn button" id="offBtn">stop training</button>
+                        <div>
+                            <input type="range" min="-10" max="10" step="10"
+                                list="slider-ticks-food" class="custom-range"
+                                id="food" />
+                            <datalist id="slider-ticks-food">
+                                <option value="-10">-10</option>
+                                <option value="0">0</option>
+                                <option value="10">10</option>
+                            </datalist>
                         </div>
-                        <div class="ml-5" align="right" style="width: 240px; display: inline">
-                            <a href="/evaluation" style="width: 240px;" class="btn button">continue</a>
+                        <br>
+
+                        <!-- Alive -->
+                        <div>
+                            <label for="alive">Staying alive reward value:</label>
+                            <output id="output-alive" for="alive"></output>
                         </div>
+                        <div>
+                            <input type="range" min="-10" max="10" step="10"
+                                list="slider-ticks-alive" class="custom-range"
+                                id="alive" />
+                            <datalist id="slider-ticks-alive">
+                                <option value="-10">-10</option>
+                                <option value="0">0</option>
+                                <option value="10">10</option>
+                            </datalist>
+                        </div>
+                        <br>
+
+                        <!-- Die -->
+                        <div>
+                            <label for="die">Die reward value:</label>
+                            <output id="output-die" for="die"></output>
+                        </div>
+                        <div>
+                            <input type="range" min="-10" max="10" step="10"
+                                list="slider-ticks-die" class="custom-range"
+                                id="die" />
+                            <datalist id="slider-ticks-die">
+                                <option value="-10">-10</option>
+                                <option value="0">0</option>
+                                <option value="10">10</option>
+                            </datalist>
+                        </div>
+                        <br>
+
+                    </fieldset>
+                    <br>
+                </div>
+                <!-- Buttons -->
+                <div class="col">
+                    <div class="text-center">
+                        <button style="width: 240px;" class="btn button mx-3" id="trainBtn">train</button>
+                        <button style="width: 240px;" class="btn button mx-3" id="offBtn">stop training</button>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="/evaluation" style="width: 240px;" class="btn button">continue</a>
                     </div>
                 </div>
             </div>
