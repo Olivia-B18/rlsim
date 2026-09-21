@@ -56,8 +56,6 @@ trainingInputElements.forEach((trainingInputElement) => {
 document.getElementById("trainBtn").addEventListener("click", function () {
     if (!running) {
         running = true;
-        // Built from the sliders themselves, keyed by each input's id, so a
-        // slider added in training.html is picked up with no change here.
         const trainingInputValues = Object.fromEntries(
             Array.from(trainingInputElements, (slider) => [slider.id, slider.value])
         );

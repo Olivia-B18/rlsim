@@ -19,6 +19,7 @@ class Direction(Enum):
 
 Point = namedtuple('Point', 'x, y')
 
+
 BLOCK_SIZE = 20
 SPEED = 1000
 GAMES = 0
@@ -36,11 +37,11 @@ def acknowledgment(running):
 
 class SnakeGameAI:
 
-    def __init__(self, eat_apple, stay_alive, die, w=640, h=480):
+    def __init__(self, eat, alive, die, w=640, h=480):
         self.w = w
         self.h = h
-        self.eat_apple = eat_apple
-        self.stay_alive = stay_alive
+        self.eat = eat
+        self.alive = alive
         self.die = die
         self.clock = pygame.time.Clock()
         self.reset()
@@ -91,7 +92,7 @@ class SnakeGameAI:
         self.snake.insert(0, self.head)
         
         # 3. check if game over
-        reward = self.stay_alive                            # REWARD FUNCTION IF IS ALIVE
+        reward = self.alive                            # REWARD FUNCTION IF IS ALIVE
         game_over = False
         if self.is_collision() or self.frame_iteration > 60*len(self.snake):
             game_over = True
@@ -101,7 +102,7 @@ class SnakeGameAI:
         # 4. place new food or just move
         if self.head == self.food: # if eats food
             self.score += 1
-            reward = self.eat_apple                         # REWARD FUNCTION IF EATS FOOD
+            reward = self.eat                         # REWARD FUNCTION IF EATS FOOD
             self._place_food()
         else:
             self.snake.pop()

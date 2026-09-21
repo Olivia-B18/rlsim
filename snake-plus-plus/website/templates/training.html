@@ -62,7 +62,7 @@
                 <!-- Game canvas -->
                 <canvas class="game-board" id="gameBoard" width="640" height="480"></canvas>
                 <!-- Sliders -->
-                <div class="col" align="center">
+                <div class="col text-center">
                     <br>
                     <fieldset id="training-sliders">
                         <legend>Choose the hyperparameters to train your agent with.</legend>
@@ -125,17 +125,17 @@
                             <div class="col">
                                 <h5 class="accent-text">Rewards</h5>
 
-                                <!-- Food -->
+                                <!-- Eat -->
                                 <div>
-                                    <label for="food">{{ params.food.label }}:</label>
-                                    <output id="output-food" for="food"></output>
+                                    <label for="eat">{{ params.eat.label }}:</label>
+                                    <output id="output-eat" for="eat"></output>
                                 </div>
                                 <div>
-                                    <input type="range" min="{{ params.food.min }}" max="{{ params.food.max }}" step="{{ params.food.step }}"
-                                        list="slider-ticks-food" value="{{ params.food.default }}" class="custom-range"
-                                        id="food" />
-                                    <datalist id="slider-ticks-food">
-                                    {% for tick in params.food.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    <input type="range" min="{{ params.eat.min }}" max="{{ params.eat.max }}" step="{{ params.eat.step }}"
+                                        list="slider-ticks-eat" value="{{ params.eat.default }}" class="custom-range"
+                                        id="eat" />
+                                    <datalist id="slider-ticks-eat">
+                                    {% for tick in params.eat.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
                                     </datalist>
                                 </div>
                                 <br>

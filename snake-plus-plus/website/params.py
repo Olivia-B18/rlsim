@@ -40,8 +40,8 @@ PARAMS = {
     },
 
     # --- Reward function --------------------------------------------------
-    "food": {
-        "label": "Food reward value",
+    "eat": {
+        "label": "Eat",
         "group": "reward",
         "type": int,
         "min": -10,
@@ -51,7 +51,7 @@ PARAMS = {
         "ticks": [-10, 0, 10],
     },
     "alive": {
-        "label": "Staying alive reward value",
+        "label": "Alive",
         "group": "reward",
         "type": int,
         "min": -10,
@@ -61,7 +61,7 @@ PARAMS = {
         "ticks": [-10, 0, 10],
     },
     "die": {
-        "label": "Die reward value",
+        "label": "Die",
         "group": "reward",
         "type": int,
         "min": -10,

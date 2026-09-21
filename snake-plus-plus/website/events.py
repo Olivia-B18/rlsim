@@ -4,9 +4,7 @@ from flask_socketio import disconnect
 from .extensions import socketio
 from .params import PARAMS
 
-# DEV: Remove "if spec["group"]" in TRAINING_INPUTS when agent hyperparameters are connected.
-
-REQ_TRAINING_INPUTS = tuple(name for name, spec in PARAMS.items() if spec["group"] == "reward")
+REQ_TRAINING_INPUTS = tuple(name for name, spec in PARAMS.items())
 
 # DEV: socket auth is commented out to match views.py where "# @login_required"
 # is disabled while pages are being built. Re-enable "# @authenticated_only"
@@ -63,12 +61,14 @@ def clean(payload):
 @socketio.on("train")
 # @authenticated_only
 def handle_train(training_inputs):
+    print("RAW  ", {k: (v, type(v).__name__) for k, v in training_inputs.items()})
     try:
         values = clean(training_inputs)
     except ValueError as err:
         print(f"train: {err}")
         return
 
-    # Begin training.
+    # Begin training
     from .agent import start
+    print("CLEAN ", {k: (v, type(v).__name__) for k, v in values.items()})
     start(**{key: values[key] for key in REQ_TRAINING_INPUTS})

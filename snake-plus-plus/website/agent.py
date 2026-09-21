@@ -13,17 +13,17 @@ from flask_login import current_user
 
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
-LR = 0.001
 
 class Agent:
 
-    def __init__(self):
+    def __init__(self, alpha, gamma, epsilon):
         self.n_games = 0
-        self.epsilon = 0 # randomness
-        self.gamma = 0.9 # discount rate
-        self.memory = deque(maxlen=MAX_MEMORY) # popleft()
-        self.model = Linear_QNet(11, 256, 3) # model is initialized here
-        self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
+        self.alpha = alpha
+        self.gamma = gamma
+        self.epsilon_start = epsilon
+        self.memory = deque(maxlen=MAX_MEMORY)
+        self.model = Linear_QNet(11, 256, 3)
+        self.trainer = QTrainer(self.model, lr=self.alpha, gamma=self.gamma)
 
     def get_state(self, game):
         head = game.snake[0]
@@ -87,7 +87,7 @@ class Agent:
 
     def get_action(self, state):
         # random moves: tradeoff exploration / exploitation
-        self.epsilon = 80 - self.n_games
+        self.epsilon = self.epsilon_start - self.n_games
         final_move = [0,0,0]
         if random.randint(0, 200) < self.epsilon: # defining logic for exploration
             move = random.randint(0, 2)
@@ -99,7 +99,7 @@ class Agent:
             final_move[move] = 1
         return final_move
 
-def train(eat_apple, stay_alive, die):
+def train(alpha, gamma, epsilon, eat, alive, die):
 
     start_time = time.time()
 
@@ -108,8 +108,8 @@ def train(eat_apple, stay_alive, die):
     total_score = 0
     record = 0
     score = 0
-    agent = Agent()
-    game = SnakeGameAI(eat_apple, stay_alive, die)
+    agent = Agent(alpha, gamma, epsilon)
+    game = SnakeGameAI(eat, alive, die)
     while agent.n_games <= 100:
         # get old state
         state_old = agent.get_state(game)
@@ -144,8 +144,11 @@ def train(eat_apple, stay_alive, die):
     mean_score = total_score / agent.n_games
     return agent.n_games, record, mean_score
 
-def log_to_db(high_score, avg_score, eat, alive, die, user_id):
-    ai = AI(high_score=int(high_score), avg_score=int(avg_score), eat=int(eat), alive=int(alive), die=int(die), user_id=user_id)
+def log_to_db(high_score, avg_score, alpha, gamma, epsilon, eat, alive, die, user_id):
+    ai = AI(high_score=int(high_score), avg_score=int(avg_score), user_id=user_id,
+            alpha=float(alpha), gamma=float(gamma), epsilon=float(epsilon),
+            eat=int(eat), alive=int(alive), die=int(die),
+            )
     db.session.add(ai)
     db.session.commit()
 
@@ -157,11 +160,11 @@ def log_to_db(high_score, avg_score, eat, alive, die, user_id):
 #     socketio.emit("highscore_data", {"data": data}, to=request.sid)
 #     print(data)
 
-def start(food, alive, die):
+def start(alpha, gamma, epsilon, eat, alive, die):
 
-    num_games, high_score, avg_score = train(food, alive, die)
+    num_games, high_score, avg_score = train(alpha, gamma, epsilon, eat, alive, die)
     if current_user.is_authenticated:
-        log_to_db(high_score, avg_score, food, alive, die, current_user.id)
+        log_to_db(high_score, avg_score, alpha, gamma, epsilon, eat, alive, die, current_user.id)
     else:
         print("not signed in -- training result not saved")
 
