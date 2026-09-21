@@ -121,6 +121,7 @@ def train(eat_apple, stay_alive, die):
         reward, done, score, games = game.play_step(final_move, agent.n_games, total_score, record, score)
         state_new = agent.get_state(game)
         agent.n_games = games
+
         # train short memory
         agent.train_short_memory(state_old, final_move, reward, state_new, done)
 
@@ -156,11 +157,11 @@ def log_to_db(high_score, avg_score, eat, alive, die, user_id):
 #     socketio.emit("highscore_data", {"data": data}, to=request.sid)
 #     print(data)
 
-def start(eat, alive, die):
+def start(food, alive, die):
 
-    num_games, high_score, avg_score = train(int(eat), int(alive), int(die))
+    num_games, high_score, avg_score = train(food, alive, die)
     if current_user.is_authenticated:
-        log_to_db(high_score, avg_score, eat, alive, die, current_user.id)
+        log_to_db(high_score, avg_score, food, alive, die, current_user.id)
     else:
         print("not signed in -- training result not saved")
 

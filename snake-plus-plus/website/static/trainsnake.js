@@ -56,10 +56,12 @@ trainingInputElements.forEach((trainingInputElement) => {
 document.getElementById("trainBtn").addEventListener("click", function () {
     if (!running) {
         running = true;
-        let food = document.getElementById("food").value;
-        let alive = document.getElementById("alive").value;
-        let die = document.getElementById("die").value;
-        socket.emit("train", food, alive, die);
+        // Built from the sliders themselves, keyed by each input's id, so a
+        // slider added in training.html is picked up with no change here.
+        const trainingInputValues = Object.fromEntries(
+            Array.from(trainingInputElements, (slider) => [slider.id, slider.value])
+        );
+        socket.emit("train", trainingInputValues);
         hidemeDiv.style.display = "block";
     }
 

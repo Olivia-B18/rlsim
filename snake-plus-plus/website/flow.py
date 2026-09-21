@@ -24,7 +24,7 @@ from flask import flash, redirect, session, url_for
 FLOW = ["intro",
         "snake",
         "untrained",
-        "hyperparameters",
+        "parameters",
         "training",
         "evaluation",
         "conclusion",

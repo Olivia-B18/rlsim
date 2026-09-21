@@ -66,58 +66,112 @@
                     <br>
                     <fieldset id="training-sliders">
                         <legend>Choose the hyperparameters to train your agent with.</legend>
+                        <div class="row">
 
-                        <!-- Food -->
-                        <div>
-                            <label for="food">Food reward value:</label>
-                            <output id="output-food" for="food"></output>
-                        </div>
-                        <div>
-                            <input type="range" min="-10" max="10" step="10"
-                                list="slider-ticks-food" class="custom-range"
-                                id="food" />
-                            <datalist id="slider-ticks-food">
-                                <option value="-10">-10</option>
-                                <option value="0">0</option>
-                                <option value="10">10</option>
-                            </datalist>
-                        </div>
-                        <br>
+                            <!-- Left column: agent hyperparameters -->
+                            <div class="col">
+                                <h5 class="accent-text">Agent</h5>
 
-                        <!-- Alive -->
-                        <div>
-                            <label for="alive">Staying alive reward value:</label>
-                            <output id="output-alive" for="alive"></output>
-                        </div>
-                        <div>
-                            <input type="range" min="-10" max="10" step="10"
-                                list="slider-ticks-alive" class="custom-range"
-                                id="alive" />
-                            <datalist id="slider-ticks-alive">
-                                <option value="-10">-10</option>
-                                <option value="0">0</option>
-                                <option value="10">10</option>
-                            </datalist>
-                        </div>
-                        <br>
+                                <!-- Learning rate (alpha) -->
+                                <div>
+                                    <label for="alpha">{{ params.alpha.label }}:</label>
+                                    <output id="output-alpha" for="alpha"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.alpha.min }}" max="{{ params.alpha.max }}" step="{{ params.alpha.step }}"
+                                        value="{{ params.alpha.default }}"
+                                        list="slider-ticks-alpha" class="custom-range"
+                                        id="alpha" />
+                                    <datalist id="slider-ticks-alpha">
+                                    {% for tick in params.alpha.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
 
-                        <!-- Die -->
-                        <div>
-                            <label for="die">Die reward value:</label>
-                            <output id="output-die" for="die"></output>
-                        </div>
-                        <div>
-                            <input type="range" min="-10" max="10" step="10"
-                                list="slider-ticks-die" class="custom-range"
-                                id="die" />
-                            <datalist id="slider-ticks-die">
-                                <option value="-10">-10</option>
-                                <option value="0">0</option>
-                                <option value="10">10</option>
-                            </datalist>
-                        </div>
-                        <br>
+                                <!-- Discount factor (gamma) -->
+                                <div>
+                                    <label for="gamma">{{ params.gamma.label }}:</label>
+                                    <output id="output-gamma" for="gamma"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.gamma.min }}" max="{{ params.gamma.max }}" step="{{ params.gamma.step }}"
+                                        value="{{ params.gamma.default }}"
+                                        list="slider-ticks-gamma" class="custom-range"
+                                        id="gamma" />
+                                    <datalist id="slider-ticks-gamma">
+                                    {% for tick in params.gamma.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
 
+                                <!-- Starting exploration rate (epsilon) -->
+                                <div>
+                                    <label for="epsilon">{{ params.epsilon.label }}:</label>
+                                    <output id="output-epsilon" for="epsilon"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.epsilon.min }}" max="{{ params.epsilon.max }}" step="{{ params.epsilon.step }}"
+                                        value="{{ params.epsilon.default }}"
+                                        list="slider-ticks-epsilon" class="custom-range"
+                                        id="epsilon" />
+                                    <datalist id="slider-ticks-epsilon">
+                                    {% for tick in params.epsilon.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
+                            </div>
+
+                            <!-- Right column: reward function -->
+                            <div class="col">
+                                <h5 class="accent-text">Rewards</h5>
+
+                                <!-- Food -->
+                                <div>
+                                    <label for="food">{{ params.food.label }}:</label>
+                                    <output id="output-food" for="food"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.food.min }}" max="{{ params.food.max }}" step="{{ params.food.step }}"
+                                        list="slider-ticks-food" value="{{ params.food.default }}" class="custom-range"
+                                        id="food" />
+                                    <datalist id="slider-ticks-food">
+                                    {% for tick in params.food.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
+
+                                <!-- Alive -->
+                                <div>
+                                    <label for="alive">{{ params.alive.label }}:</label>
+                                    <output id="output-alive" for="alive"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.alive.min }}" max="{{ params.alive.max }}" step="{{ params.alive.step }}"
+                                        list="slider-ticks-alive" value="{{ params.alive.default }}" class="custom-range"
+                                        id="alive" />
+                                    <datalist id="slider-ticks-alive">
+                                    {% for tick in params.alive.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
+
+                                <!-- Die -->
+                                <div>
+                                    <label for="die">{{ params.die.label }}:</label>
+                                    <output id="output-die" for="die"></output>
+                                </div>
+                                <div>
+                                    <input type="range" min="{{ params.die.min }}" max="{{ params.die.max }}" step="{{ params.die.step }}"
+                                        list="slider-ticks-die" value="{{ params.die.default }}" class="custom-range"
+                                        id="die" />
+                                    <datalist id="slider-ticks-die">
+                                    {% for tick in params.die.ticks %}<option value="{{ tick }}">{{ tick }}</option>{% endfor %}
+                                    </datalist>
+                                </div>
+                                <br>
+                            </div>
+
+                        </div>
                     </fieldset>
                     <br>
                 </div>
@@ -134,5 +188,5 @@
             </div>
         </div>
     </div>
-    <script src="{{url_for('static', filename='snakeai.js')}}"></script>
+    <script src="{{url_for('static', filename='trainsnake.js')}}"></script>
 {% endblock %}

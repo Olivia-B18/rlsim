@@ -19,13 +19,6 @@ class Direction(Enum):
 
 Point = namedtuple('Point', 'x, y')
 
-# rgb colors
-WHITE = (255, 255, 255)
-RED = (200,0,0)
-BLUE1 = (0, 0, 255)
-BLUE2 = (0, 100, 255)
-BLACK = (0,0,0)
-
 BLOCK_SIZE = 20
 SPEED = 1000
 GAMES = 0
@@ -98,17 +91,17 @@ class SnakeGameAI:
         self.snake.insert(0, self.head)
         
         # 3. check if game over
-        reward = self.stay_alive                           # REWARD FUNCTION IF IS ALIVE
+        reward = self.stay_alive                            # REWARD FUNCTION IF IS ALIVE
         game_over = False
-        if self.is_collision() or self.frame_iteration > 60*len(self.snake): # if collision
+        if self.is_collision() or self.frame_iteration > 60*len(self.snake):
             game_over = True
-            reward = self.die                     # REWARD FUNCTION IF DIES
+            reward = self.die                               # REWARD FUNCTION IF DIES
             return reward, game_over, self.score, games
 
         # 4. place new food or just move
         if self.head == self.food: # if eats food
             self.score += 1
-            reward = self.eat_apple                        # REWARD FUNCTION IF EATS FOOD
+            reward = self.eat_apple                         # REWARD FUNCTION IF EATS FOOD
             self._place_food()
         else:
             self.snake.pop()
@@ -116,6 +109,7 @@ class SnakeGameAI:
         # 5. update ui and clock
         self._update_ui(games, total_score, record, score)
         self.clock.tick(SPEED)
+
         # 6. return game over and score
         return reward, game_over, self.score, games
 

@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint
 from flask_login import login_required
-
 from . import flow
+from .params import PARAMS
 
 views = Blueprint("views", __name__)
 
@@ -31,17 +31,17 @@ def snake():
 def untrained():
     return render_template("untrained.html")
 
-@views.route("/hyperparameters")
+@views.route("/parameters")
 # @login_required
-# @flow.step("hyperparameters")
+# @flow.step("parameters")
 def parameters():
-    return render_template("hyperparameters.html")
+    return render_template("parameters.html")
 
 @views.route("/training")
 # @login_required
 # @flow.step("training")
 def training():
-    return render_template("training.html")
+    return render_template("training.html", params=PARAMS)
 
 @views.route("/evaluation")
 # @login_required
